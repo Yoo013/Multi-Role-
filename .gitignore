@@ -1,0 +1,31 @@
+# Laravel 11 .gitignore
+
+# Laravel / vendor
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/storage/app/*.key
+/storage/framework/*
+/storage/logs/*
+/storage/debugbar/*
+
+# Environment file
+.env
+
+# Composer and NPM dependencies
+/composer.phar
+/.composer
+
+# IDE or editor files
+.idea
+/.vscode
+/.phpstorm
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Laravel specific files
+/.phpunit.result.cache
+/.env.*.backup
