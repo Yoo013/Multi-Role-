@@ -14,10 +14,10 @@
                     <table id="tbl_list" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th>Tanggal</th>
                                 <th>Nama</th>
                                 <th>Deskripsi</th>
                                 <th>Aksi</th>
-                                <th>Tanggal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +46,18 @@
             ajax: "{{ route('products.index') }}",
             columns: [
                 {
+                    data: 'created_at',
+                    name: 'created_at',
+                    render: function(data, type, row) {
+                        var date = new Date(data);  
+                        var day = ("0" + date.getDate()).slice(-2); 
+                        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+                        var year = date.getFullYear();
+
+                        return day + '-' + month + '-' + year;
+                    }
+                },
+                {
                     data: 'name',
                     name: 'name'
                 },
@@ -72,35 +84,28 @@
                         return buttons;
                     }
                 },
-                {
-                    data: 'created_at',
-                    name: 'created_at',
-                    render: function(data, type, row) {
-                        var date = new Date(data);  
-                        var day = ("0" + date.getDate()).slice(-2); 
-                        var month = ("0" + (date.getMonth() + 1)).slice(-2);
-                        var year = date.getFullYear();
-
-                        return day + '-' + month + '-' + year;
-                    }
-                }
             ],
             dom: 'Bfrtip',  
             buttons: [
                 {
                     extend: 'excelHtml5',
                     text: 'Export Excel',
-                    className: 'btn btn-success btn-sm'
+                    className: 'btn btn-success btn-sm',
+                    exportOptions: {
+                    columns: ':not(:last-child)'  
+            }
                 },
                 {
                     extend: 'csvHtml5',
                     text: 'Export CSV',
-                    className: 'btn btn-info btn-sm'
+                    className: 'btn btn-info btn-sm',
+                    columns: ':not(:last-child)'  
                 },
                 {
                     extend: 'pdfHtml5',
                     text: 'Export PDF',
-                    className: 'btn btn-danger btn-sm'
+                    className: 'btn btn-danger btn-sm',
+                    columns: ':not(:last-child)'  
                 },
             ],
             
