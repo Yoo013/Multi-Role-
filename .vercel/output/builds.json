@@ -11,13 +11,13 @@
       "require": "vercel-php",
       "requirePath": "D:\\pkl\\permisions\\.vercel\\builders\\node_modules\\vercel-php\\dist\\index.js",
       "apiVersion": 3,
-      "use": "vercel-php@0.6.0",
+      "use": "vercel-php@0.5.4",
       "src": "api/index.php",
       "config": {
         "zeroConfig": true,
         "functions": {
           "api/index.php": {
-            "runtime": "vercel-php@0.6.0"
+            "runtime": "vercel-php@0.5.4"
           }
         }
       },
